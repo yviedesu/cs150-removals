@@ -1,0 +1,59 @@
+cabal-version:   3.14
+name:            cs150-removals
+version:         0.1.0.0
+license:         NONE
+author:          Yvie Anaysha
+maintainer:      trexiscool9000@gmail.com
+build-type:      Simple
+extra-doc-files: README.md
+extra-source-files: resources/*.png
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:
+        Model
+        Controller
+        View
+        Components.Bomb_component
+        Components.Explosion_component
+        Components.Grid_tile_component
+        Components.Player_component
+        Constants.Game_constants
+        Enums.Tile_types
+        Models.Gamestate
+        Models.Playerdata
+    build-depends:
+        base ^>=4.21.0.0,
+        array,
+        containers,
+        miso,
+        jsaddle
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable cs150-removals
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.21.0.0,
+        exceptions,
+        transformers,
+        miso,
+        cs150-removals
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite cs150-removals-test
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.21.0.0,
+        array,
+        containers,
+        cs150-removals
